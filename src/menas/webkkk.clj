@@ -1,4 +1,7 @@
-(ns clojure-getting-started.web
+(comment
+
+
+(ns menas.web
   (:require [compojure.core :refer [defroutes GET PUT POST DELETE ANY]]
             [compojure.handler :refer [site]]
             [compojure.route :as route]
@@ -11,9 +14,18 @@
    :headers {"Content-Type" "text/plain"}
    :body (pr-str ["Hello" :from 'Heroku])})
 
+(defn post []
+  {:status 200
+   :headers {"Content-Type" "text/plain"}
+   :body "Posts : "})
+
+
+
 (defroutes app
   (GET "/" []
        (splash))
+  (GET "/post" []
+       (post))
   (ANY "*" []
        (route/not-found (slurp (io/resource "404.html")))))
 
@@ -24,3 +36,5 @@
 ;; For interactive development:
 ;; (.stop server)
 ;; (def server (-main))
+
+  )
