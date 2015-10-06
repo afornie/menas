@@ -1,6 +1,6 @@
 (defproject menas "0.1.0-SNAPSHOT"
 
-  :description "FIXME: write description"
+  :description "Men against sexism"
   :url "http://example.com/FIXME"
 
   :dependencies [[org.clojure/clojure "1.7.0"]
@@ -29,7 +29,7 @@
   :uberjar-name "menas.jar"
   :jvm-opts ["-server"]
 
-  :main menas.core
+  :main menas.launcher
 
   :plugins [[lein-environ "1.0.1"]]
   :profiles

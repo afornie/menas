@@ -2,7 +2,7 @@
 
 ### Managing Your Middleware
 
-Request middleware functions are located under the `swag.middleware` namespace.
+Request middleware functions are located under the `menas.middleware` namespace.
 
 This namespace is reserved for any custom middleware for the application. Some default middleware is
 already defined here.
