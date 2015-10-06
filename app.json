@@ -1,6 +1,0 @@
-{
-  "name": "Menas",
-  "description": "Men against sexism",
-  "image": "heroku/clojure",
-  "addons": [ "heroku-postgresql" ]
-}
