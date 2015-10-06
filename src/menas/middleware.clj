@@ -1,5 +1,5 @@
-(ns swag.middleware
-  (:require [swag.layout :refer [*app-context* error-page]]
+(ns menas.middleware
+  (:require [menas.layout :refer [*app-context* error-page]]
             [taoensso.timbre :as timbre]
             [environ.core :refer [env]]
             [selmer.middleware :refer [wrap-error-page]]

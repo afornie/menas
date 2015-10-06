@@ -1,9 +1,9 @@
-(ns swag.handler
+(ns menas.handler
   (:require [compojure.core :refer [defroutes routes wrap-routes]]
-            [swag.layout :refer [error-page]]
-            [swag.routes.home :refer [home-routes]]
-            [swag.routes.services :refer [service-routes]]
-            [swag.middleware :as middleware]
+            [menas.layout :refer [error-page]]
+            [menas.routes.home :refer [home-routes]]
+            [menas.routes.services :refer [service-routes]]
+            [menas.middleware :as middleware]
             [compojure.route :as route]
             [taoensso.timbre :as timbre]
             [taoensso.timbre.appenders.3rd-party.rotor :as rotor]
@@ -20,13 +20,13 @@
   (timbre/merge-config!
     {:level     (if (env :dev) :trace :info)
      :appenders {:rotor (rotor/rotor-appender
-                          {:path "swag.log"
+                          {:path "menas.log"
                            :max-size (* 512 1024)
                            :backlog 10})}})
 
   (if (env :dev) (parser/cache-off!))
   (timbre/info (str
-                 "\n-=[swag started successfully"
+                 "\n-=[menas started successfully"
                  (when (env :dev) " using the development profile")
                  "]=-")))
 
@@ -34,7 +34,7 @@
   "destroy will be called when your application
    shuts down, put any clean up code here"
   []
-  (timbre/info "swag is shutting down...")
+  (timbre/info "menas is shutting down...")
   (timbre/info "shutdown complete!"))
 
 (def app-routes

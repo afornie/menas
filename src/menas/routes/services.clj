@@ -1,4 +1,4 @@
-(ns swag.routes.services
+(ns menas.routes.services
   (:require [ring.util.http-response :refer :all]
             [compojure.api.sweet :refer :all]
             [schema.core :as s]))

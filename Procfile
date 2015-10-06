@@ -1,1 +1,1 @@
-web: java $JVM_OPTS -cp target/swag.jar clojure.main -m swag.core
+web: java $JVM_OPTS -cp target/menas.jar clojure.main -m menas.launcher

@@ -1,5 +1,5 @@
-(ns swag.routes.home
-  (:require [swag.layout :as layout]
+(ns menas.routes.home
+  (:require [menas.layout :as layout]
             [compojure.core :refer [defroutes GET]]
             [ring.util.http-response :refer [ok]]
             [clojure.java.io :as io]))

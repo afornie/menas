@@ -1,4 +1,4 @@
-(defproject swag "0.1.0-SNAPSHOT"
+(defproject menas "0.1.0-SNAPSHOT"
 
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
@@ -26,10 +26,10 @@
                  [org.immutant/web "2.1.0"]]
 
   :min-lein-version "2.0.0"
-  :uberjar-name "swag.jar"
+  :uberjar-name "menas.jar"
   :jvm-opts ["-server"]
 
-  :main swag.core
+  :main menas.core
 
   :plugins [[lein-environ "1.0.1"]]
   :profiles
@@ -41,9 +41,9 @@
    :project/dev  {:dependencies [[ring/ring-mock "0.3.0"]
                                  [ring/ring-devel "1.4.0"]
                                  [pjstadig/humane-test-output "0.7.0"]]
-                  
-                  
-                  :repl-options {:init-ns swag.core}
+
+
+                  :repl-options {:init-ns menas.launcher}
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]
                   ;;when :nrepl-port is set the application starts the nREPL server on load

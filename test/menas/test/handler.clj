@@ -1,7 +1,7 @@
-(ns swag.test.handler
+(ns menas.test.handler
   (:require [clojure.test :refer :all]
             [ring.mock.request :refer :all]
-            [swag.handler :refer :all]))
+            [menas.handler :refer :all]))
 
 (deftest test-app
   (testing "main route"

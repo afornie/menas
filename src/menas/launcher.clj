@@ -1,5 +1,5 @@
-(ns swag.core
-  (:require [swag.handler :refer [app init destroy]]
+(ns menas.launcher
+  (:require [menas.handler :refer [app init destroy]]
             [immutant.web :as immutant]
             [clojure.tools.nrepl.server :as nrepl]
             [taoensso.timbre :as timbre]
