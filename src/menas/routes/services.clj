@@ -7,6 +7,10 @@
                       :hot Boolean
                       :tag (s/enum :kikka :kukka)})
 
+(s/defschema Mena {:id Long
+                      :title String
+                      :body String})
+
 (defapi service-routes
   (ring.swagger.ui/swagger-ui
    "/swagger-ui")
@@ -22,10 +26,11 @@
                   :summary      "Just return a Thingie"
                   (ok {:id 123456 :hot true :tag :kikka}))
 
-            (GET* "/mines" []
-                  :return       [Thingie]
-                  :summary      "List of Thingies"
-                  (ok [{:id 123456 :hot true :tag :kikka}, {:id 81632 :hot true :tag :kikka}]))
+            (GET* "/menas" []
+                  :return       [Mena]
+                  :summary      "List of Menas"
+                  (ok [{:id 1 :title "Buscando apoyos para esta web" :body "Necesitamos tu ayuda"},
+                       {:id 2 :title "Ayuda a que este proyecto trascienda" :body "Tu apoyo es ejemplo para otros"}]))
 
 
             (POST* "/mine" []
