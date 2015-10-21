@@ -21,6 +21,7 @@
                  [org.clojure/tools.nrepl "0.2.11"]
                  [org.webjars/bootstrap "3.3.5"]
                  [org.webjars/jquery "2.1.4"]
+                 [org.webjars/angularjs "1.4.7"]
                  [metosin/compojure-api "0.23.1"]
                  [metosin/ring-swagger-ui "2.1.3"]
                  [org.immutant/web "2.1.0"]]

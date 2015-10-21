@@ -22,6 +22,11 @@
                   :summary      "Just return a Thingie"
                   (ok {:id 123456 :hot true :tag :kikka}))
 
+            (GET* "/mines" []
+                  :return       [Thingie]
+                  :summary      "List of Thingies"
+                  (ok [{:id 123456 :hot true :tag :kikka}, {:id 81632 :hot true :tag :kikka}]))
+
 
             (POST* "/mine" []
                    :return      Thingie
