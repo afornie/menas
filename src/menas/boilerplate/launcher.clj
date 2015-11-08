@@ -1,9 +1,11 @@
-(ns menas.launcher
-  (:require [menas.handler :refer [app init destroy]]
-            [immutant.web :as immutant]
+(ns menas.boilerplate.launcher
+  (:require [immutant.web :as immutant]
             [clojure.tools.nrepl.server :as nrepl]
             [taoensso.timbre :as timbre]
-            [environ.core :refer [env]])
+            [environ.core :refer [env]]
+
+            [menas.boilerplate.handler :refer [app init destroy]]
+            )
   (:gen-class))
 
 (defonce nrepl-server (atom nil))
@@ -62,3 +64,7 @@
 
 (defn -main [& args]
   (start-app args))
+
+(defn loadfoo
+  []
+  (println "loadfoo"))

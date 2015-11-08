@@ -4,10 +4,10 @@
   :url "http://example.com/FIXME"
 
   :dependencies [[org.clojure/clojure "1.7.0"]
-                 [selmer "0.9.2"]
+                 [selmer "0.9.3"]
                  [com.taoensso/timbre "4.1.4"]
                  [com.taoensso/tower "3.0.2"]
-                 [markdown-clj "0.9.74"]
+                 [markdown-clj "0.9.76"]
                  [environ "1.0.1"]
                  [compojure "1.4.0"]
                  [ring-webjars "0.1.1"]
@@ -21,6 +21,7 @@
                  [org.clojure/tools.nrepl "0.2.11"]
                  [org.webjars/bootstrap "3.3.5"]
                  [org.webjars/jquery "2.1.4"]
+                 [com.novemberain/monger "3.0.0-rc2"]
                  [org.webjars/angularjs "1.4.7"]
                  [metosin/compojure-api "0.23.1"]
                  [metosin/ring-swagger-ui "2.1.3"]
@@ -30,7 +31,7 @@
   :uberjar-name "menas.jar"
   :jvm-opts ["-server"]
 
-  :main menas.launcher
+  :main menas.boilerplate.launcher
 
   :plugins [[lein-environ "1.0.1"]]
   :profiles
@@ -44,7 +45,7 @@
                                  [pjstadig/humane-test-output "0.7.0"]]
 
 
-                  :repl-options {:init-ns menas.launcher}
+                  :repl-options {:init-ns menas.boilerplate.launcher}
                   :injections [(require 'pjstadig.humane-test-output)
                                (pjstadig.humane-test-output/activate!)]
                   ;;when :nrepl-port is set the application starts the nREPL server on load

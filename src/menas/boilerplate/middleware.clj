@@ -1,5 +1,5 @@
-(ns menas.middleware
-  (:require [menas.layout :refer [*app-context* error-page]]
+(ns menas.boilerplate.middleware
+  (:require
             [taoensso.timbre :as timbre]
             [environ.core :refer [env]]
             [selmer.middleware :refer [wrap-error-page]]
@@ -11,7 +11,10 @@
             [ring.middleware.defaults :refer [site-defaults wrap-defaults]]
             [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
             [ring.middleware.format :refer [wrap-restful-format]]
-            [ring.middleware.anti-forgery :refer [wrap-anti-forgery]])
+            [ring.middleware.anti-forgery :refer [wrap-anti-forgery]]
+
+            [menas.boilerplate.layout :refer [*app-context* error-page]]
+            )
   (:import [javax.servlet ServletContext]))
 
 (defn wrap-context [handler]

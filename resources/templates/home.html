@@ -1,14 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div ng-repeat="mena in menas" ng-model="menas">
-    <h2><span ng-bind="mena.id"></span></h2>
-    <h2><span ng-bind="mena.title"></span></h2>
-    <p><span ng-bind="mena.body"></span></p>
-    <hr/>
+<br/><br/>
+
+<div>
+    <table width="90%">
+        <tr>
+            <td width="70%"></td>
+            <td width="30%">User</td>
+        </tr>
+        <tr>
+            <td width="70%"></td>
+            <td width="30%">
+                <input type="text" ng-model="token">
+            </td>
+        </tr>
+    </table>
 </div>
 
-<button ng-click="loadMenas()">Load</button>
+<div>
+    <input type="text" ng-model="newMena.title" value="Title"/><br/>
+    <textarea maxlength="140" rows="4" cols="80" ng-model="newMena.body"></textarea>
+    <br/>
+    <select ng-model="addCategory">
+        <option value="opinion">Opinion</option>
+        <option value="event">Event</option>
+        <option value="support">Support</option>
+    </select>
+    <button ng-click="submitMena()">Fight!</button>
+</div>
 
+<br/><br/>
+
+<div>
+    <div ng-repeat="mena in menas" ng-model="menas">
+        <h3><span ng-bind="mena.title"></span> | <span ng-bind="mena.categories">  | <span ng-bind="mena.tags"> | <span ng-bind="mena.user-id"></span></h3>
+        <p><span ng-bind="mena.body"></span></p>
+        <hr/>
+    </div>
+
+    <button ng-click="loadMenas()">Load</button>
+</div>
 
 {% endblock %}

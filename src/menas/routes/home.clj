@@ -1,8 +1,11 @@
 (ns menas.routes.home
-  (:require [menas.layout :as layout]
+  (:require
             [compojure.core :refer [defroutes GET]]
             [ring.util.http-response :refer [ok]]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+
+            [menas.boilerplate.layout :as layout]
+            ))
 
 (defn home-page []
   (layout/render
