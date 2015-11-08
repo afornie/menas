@@ -6,29 +6,40 @@
 <div>
     <table width="90%">
         <tr>
-            <td width="70%"></td>
-            <td width="30%">User</td>
-        </tr>
-        <tr>
-            <td width="70%"></td>
+            <td width="70%">
+                <div>
+                    <input placeholder="Title" type="text" ng-model="newMena.title" value="Title"/><br/>
+                    <textarea placeholder="Type your message" maxlength="140" rows="4" cols="80" ng-model="newMena.body"></textarea>
+                    <br/>
+                    <span>Support <input type="checkbox" ng-model="addCategorySupport"/></span>
+                    <span>Opinion <input type="checkbox" ng-model="addCategoryOpinion"/></span>
+                    <span>Event <input type="checkbox" ng-model="addCategoryEvent"/></span>
+                    | Tags <input type="text" maxlength="64" ng-model="addTags">
+                    <button ng-click="submitMena()">Fight!</button>
+                </div>
+            </td>
+
             <td width="30%">
-                <input type="text" ng-model="token">
+                <table>
+                    <tr>
+                        <td>User</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" ng-model="tokenInput">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button ng-click="login()">Login</button>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>
 </div>
 
-<div>
-    <input type="text" ng-model="newMena.title" value="Title"/><br/>
-    <textarea maxlength="140" rows="4" cols="80" ng-model="newMena.body"></textarea>
-    <br/>
-    <select ng-model="addCategory">
-        <option value="opinion">Opinion</option>
-        <option value="event">Event</option>
-        <option value="support">Support</option>
-    </select>
-    <button ng-click="submitMena()">Fight!</button>
-</div>
 
 <br/><br/>
 
@@ -38,8 +49,6 @@
         <p><span ng-bind="mena.body"></span></p>
         <hr/>
     </div>
-
-    <button ng-click="loadMenas()">Load</button>
 </div>
 
 {% endblock %}
