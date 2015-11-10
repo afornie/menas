@@ -3,13 +3,13 @@
             [compojure.api.sweet :refer :all]
             [schema.core :as s]
             [environ.core :refer [env]]
+            [monger.joda-time :refer :all]
 
             [menas.bs.bs :refer :all]
-            ))
-
-(s/defschema Thingie {:id Long
-                      :hot Boolean
-                      :tag (s/enum :kikka :kukka)})
+            )
+  (:import [org.joda.time DateTimeZone]
+           [org.joda.time DateTime])
+  )
 
 (s/defschema Category (s/enum :opinion :event :support))
 
@@ -19,7 +19,8 @@
                    :body String
                    :tags [String]
                    :categories [Category]
-                   (s/optional-key :user-id) String
+                   (s/optional-key :userId) String
+                   (s/optional-key :createdOn) org.joda.time.DateTime
                    })
 
 (defn validate-token
@@ -35,7 +36,11 @@
 
 (defn fill-mena
   [mena]
-  (assoc mena :user-id "server-user"))
+  (DateTimeZone/setDefault DateTimeZone/UTC)
+  (assoc
+    (assoc mena :userId "server-user")
+
+    :createdOn (new DateTime)))
 
 (defapi service-routes
   (ring.swagger.ui/swagger-ui
@@ -44,8 +49,6 @@
   (swagger-docs
     {:info {:title "Sample api"}})
   (context* "/api" []
-            :tags ["thingie"]
-
             (GET* "/menas" []
                   :return       [Mena]
                   :summary      "List of Menas"

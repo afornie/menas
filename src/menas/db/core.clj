@@ -2,10 +2,12 @@
     (:require [monger.core :as mg]
               [monger.collection :as mc]
               [monger.operators :refer :all]
+              [monger.joda-time :refer :all]
               [environ.core :refer [env]]
 
               [menas.domain.core :refer :all]
-              ))
+              )
+  )
 
 
 (defonce db (atom nil))

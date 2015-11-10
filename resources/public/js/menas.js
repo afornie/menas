@@ -8,6 +8,12 @@ app.controller("menasController", function($scope, $http) {
       $http.get("api/menas")
           .success(function(response) {
               $scope.menas = response;
+              console.log("Received "+response.length)
+              response.forEach(function(mena) {
+                  var formattedDate = new Date(mena.createdOn).toString("yyyy-MM-dd HH:mm");
+                  console.log(formattedDate);
+                  mena.createdOn = formattedDate;
+              });
           });
     };
     function getEmptyMena() {

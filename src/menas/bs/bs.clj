@@ -9,7 +9,7 @@
 (defn create-mena
   "Creates a new mena"
   [mena]
-  (println "About to create")
+  (println "About to create mena " mena)
   (insert-mena mena)
   (println "Mena persisted")
   )
