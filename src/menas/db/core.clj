@@ -15,7 +15,7 @@
 (defn connect! []
   ;; Tries to get the Mongo URI from the environment variable
   (println "About to connect")
-  (reset! db (-> "mongodb://localhost:27017/menas01" mg/connect-via-uri :db))
+  (reset! db (-> (System/getenv "MONGOLAB_URI") mg/connect-via-uri :db))
   (println "Right after connect"))
 
 (defn disconnect! []
