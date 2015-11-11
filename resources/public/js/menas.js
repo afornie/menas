@@ -24,9 +24,18 @@ app.controller("menasController", function($scope, $http) {
     }
 
     $scope.login = function() {
-        $scope.token = $scope.tokenInput;
-        $scope.tokenInput="tokenUsed";
+        var login = {
+            user : $scope.user,
+            pwd : $scope.pwd
+        };
+        $http.post("api/login", login)
+            .success(function(response) {
+                resetNewMena();
+                $scope.token = response;
+            });
+        $scope.pwd = "";
     };
+
     function resetNewMena() {
         $scope.addCategorySupport = false;
         $scope.addCategoryEvent = false;

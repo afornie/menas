@@ -1,68 +1,55 @@
 {% extends "base.html" %}
 {% block content %}
 
-<br/><br/>
-
-<div>
-  <table width="90%">
-    <tr>
-      <td width="50%">
-        <div>
-          <input placeholder="Title" type="text" ng-model="newMena.title" value="Title"/><br/>
-          <textarea placeholder="Type your message" maxlength="140" rows="4" cols="50" ng-model="newMena.body"></textarea>
-          <br/>
-          Tags <input type="text" maxlength="64" ng-model="addTags">
-          <button ng-click="submitMena()">Fight!</button>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-preview" ng-repeat="mena in menas" ng-model="menas">
+                <a href="post.html">
+                    <h2 class="post-title" ng-bind="mena.title"></h2>
+                    <h3 class="post-subtitle" ng-bind="mena.body"></h3>
+                </a>
+                <p class="post-meta">Posted by <a href="#" ng-bind="mena.userId"></a> on
+                    <span ng-bind="mena.createdOn"></span>
+                    <br/>
+                    <span ng-bind="mena.tags"></span> |
+                    <span ng-bind="mena.categories"></span>
+                </p>
+                <hr>
+            </div>
+            <!-- Pager -->
+            <ul class="pager">
+                <li class="next">
+                    <a href="#">Older Posts &rarr;</a>
+                </li>
+            </ul>
         </div>
-      </td>
-      <td width="20%">
-        <div>
-          <span><input type="checkbox" ng-model="addCategorySupport"/>Support</span>
-          <br/>
-          <span><input type="checkbox" ng-model="addCategoryOpinion"/>Opinion</span>
-          <br/>
-          <span><input type="checkbox" ng-model="addCategoryEvent"/>Event</span>
-        </div>
-      </td>
-      <td width="30%">
-        <table>
-          <tr>
-            <td>User</td>
-          </tr>
-          <tr>
-            <td>
-              <input type="text" ng-model="tokenInput">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <button ng-click="login()">Login</button>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </table>
+    </div>
 </div>
 
-
-<br/><br/>
-
 <div>
-    <div ng-repeat="mena in menas" ng-model="menas">
-        <div>
-            <span>
-                <strong>
-                    <span ng-bind="mena.title"></span>
-                </strong> |
-                <span ng-bind="mena.categories"></span>
-                <span ng-bind="mena.createdOn"></span>
-                <span ng-bind="mena.userId"></span>
-            </span>
-        </div>
-        <p><span ng-bind="mena.body"></span></p>
-        <hr/>
-    </div>
+    <table>
+        <tr>
+            <td>
+                <div>
+                    <input placeholder="Title" type="text" ng-model="newMena.title" value="Title"/><br/>
+                    <textarea placeholder="Type your message" maxlength="140" rows="4" cols="50" ng-model="newMena.body"></textarea>
+                    <br/>
+                    Tags <input type="text" maxlength="64" ng-model="addTags">
+                    <button ng-click="submitMena()">Fight!</button>
+                </div>
+            </td>
+            <td>
+                <div>
+                    <span><input type="checkbox" ng-model="addCategorySupport"/>Support</span>
+                    <br/>
+                    <span><input type="checkbox" ng-model="addCategoryOpinion"/>Opinion</span>
+                    <br/>
+                    <span><input type="checkbox" ng-model="addCategoryEvent"/>Event</span>
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
 
 {% endblock %}

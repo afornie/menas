@@ -23,15 +23,14 @@
     (mg/disconnect conn)
     (reset! db nil)))
 
-(comment TODO "Remove this function")
-(defn get-support
-  []
-  (mc/find-one-as-map @db "support" {}))
-
 (defn find-menas
   []
   (map #(dissoc % :_id)
        (mc/find-maps @db "mena" {})))
+
+(defn find-user
+  [alias pwd]
+  (mc/find-maps @db "user" {:alias alias :pwd pwd}))
 
 (defn insert-mena
   [mena]

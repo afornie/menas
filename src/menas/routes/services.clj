@@ -2,8 +2,8 @@
   (:require [ring.util.http-response :refer :all]
             [compojure.api.sweet :refer :all]
             [schema.core :as s]
-            [environ.core :refer [env]]
             [monger.joda-time :refer :all]
+            [crypto.random :refer :all]
 
             [menas.bs.bs :refer :all]
             )
@@ -23,16 +23,11 @@
                    (s/optional-key :createdOn) org.joda.time.DateTime
                    })
 
-(defn validate-token
-  "Validates request token is correct"
-  [token]
-  (println "Received token" token)
-  (println "Expected token" (System/getenv "VALID_TOKEN"))
-  (if (= token (System/getenv "VALID_TOKEN"))
-    (println "Token validation successful")
-    (do
-      (println "Token validation failed")
-      (throw (Exception. "Authentication failed")))))
+(s/defschema Login {
+                   :user String
+                   :pwd String
+                   })
+
 
 (defn fill-mena
   [mena]
@@ -42,6 +37,13 @@
 
     :createdOn (new DateTime)))
 
+(defn generate-token
+  []
+  (let [token (crypto.random/hex 32)]
+    (println "Generated token is " token)
+    token)
+  )
+
 (defapi service-routes
   (ring.swagger.ui/swagger-ui
    "/swagger-ui")
@@ -49,20 +51,32 @@
   (swagger-docs
     {:info {:title "Sample api"}})
   (context* "/api" []
-            (GET* "/menas" []
-                  :return       [Mena]
-                  :summary      "List of Menas"
-                  (let [result (get-menas)]
-                    (println "Result is " result)
-                    (ok result)))
+    (GET* "/menas" []
+          :summary      "List of Menas"
+          :return       [Mena]
+          (let [result (get-menas)]
+            (println "Result is " result)
+            (ok result)))
 
-            (POST* "/menas" []
-                  :summary      "Upload a new Mena"
-                  :body     [mena Mena]
-                  :query-params [token :- s/Str]
-                  (do
-                    (validate-token token)
-                    (let [mena (fill-mena mena)]
-                      (create-mena mena))
-                    (ok "ok")))
-            ))
+    (POST* "/menas" []
+           :summary      "Upload a new Mena"
+           :body     [mena Mena]
+           :query-params [token :- s/Str]
+           (do
+             (validate-token token)
+             (let [mena (fill-mena mena)]
+               (create-mena mena))
+             (ok "ok")))
+
+    (POST* "/login" []
+           :summary      "Login and get a session token"
+           :return       String
+           :body [body Login]
+           (do
+             (if (validate-user (body :user) (body :pwd))
+               (let [token (generate-token)]
+                 (set-token token)
+                 (ok token))
+               (unauthorized "Wrong login"))
+             ))
+    ))
