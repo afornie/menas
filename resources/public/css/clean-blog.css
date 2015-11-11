@@ -173,14 +173,14 @@ hr.small {
   font-weight: 300;
   margin: 10px 0 0;
 }
-.login {
+.form-label {
   font-size: 20px;
   line-height: 1.1;
   display: block;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 300;
-  margin: 10px 10px 10px;
-  color: white;
+  margin: 0 0 0;
+  color: #404040;
 }
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading h1,

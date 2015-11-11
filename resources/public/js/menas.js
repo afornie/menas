@@ -40,6 +40,7 @@ app.controller("menasController", function($scope, $http) {
         $scope.addCategorySupport = false;
         $scope.addCategoryEvent = false;
         $scope.addCategoryOpinion = false;
+        $scope.addCategoryComplaint = false;
         $scope.newMena = getEmptyMena();
         $scope.addTags = "";
     }
@@ -61,6 +62,9 @@ app.controller("menasController", function($scope, $http) {
         }
         if ($scope.addCategoryEvent) {
             mena.categories.push("event")
+        }
+        if ($scope.addCategoryComplaint) {
+            mena.categories.push("complaint")
         }
         $http.post("api/menas?token="+$scope.token, mena)
             .success(function(response) {

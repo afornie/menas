@@ -11,7 +11,7 @@
            [org.joda.time DateTime])
   )
 
-(s/defschema Category (s/enum :opinion :event :support))
+(s/defschema Category (s/enum :opinion :complaint :event :support))
 
 (s/defschema Mena {
                    (s/optional-key :id) s/Any

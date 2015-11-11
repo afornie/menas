@@ -32,20 +32,27 @@
         <tr>
             <td>
                 <div>
-                    <input placeholder="Title" type="text" ng-model="newMena.title" value="Title"/><br/>
-                    <textarea placeholder="Type your message" maxlength="140" rows="4" cols="50" ng-model="newMena.body"></textarea>
+                    <input placeholder="Title" type="text" ng-model="newMena.title" value="Title"/>
+                    <input placeholder="Tags" type="text" maxlength="64" ng-model="addTags">
                     <br/>
-                    Tags <input type="text" maxlength="64" ng-model="addTags">
-                    <button ng-click="submitMena()">Fight!</button>
+                    <textarea placeholder="Type your message" maxlength="140" rows="10" cols="70" ng-model="newMena.body"></textarea>
                 </div>
             </td>
             <td>
                 <div>
-                    <span><input type="checkbox" ng-model="addCategorySupport"/>Support</span>
+                    <span class="form-label"><input type="checkbox" ng-model="addCategorySupport"/>Support</span>
                     <br/>
-                    <span><input type="checkbox" ng-model="addCategoryOpinion"/>Opinion</span>
+                    <span class="form-label"><input type="checkbox" ng-model="addCategoryOpinion"/>Opinion</span>
                     <br/>
-                    <span><input type="checkbox" ng-model="addCategoryEvent"/>Event</span>
+                    <span class="form-label"><input type="checkbox" ng-model="addCategoryEvent"/>Event</span>
+                    <br/>
+                    <span class="form-label"><input type="checkbox" ng-model="addCategoryComplaint"/>Complaint</span>
+                    <ul class="pager">
+                        <li class="next">
+                            <a ng-click="submitMena()">Fight!</a>
+                        </li>
+                    </ul>
+
                 </div>
             </td>
         </tr>

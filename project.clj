@@ -23,6 +23,7 @@
                  [org.webjars/jquery "2.1.4"]
                  [com.novemberain/monger "3.0.0-rc2"]
                  [crypto-random "1.2.0"]
+                 [clj-time "0.11.0"]
                  [org.webjars/angularjs "1.4.7"]
                  [metosin/compojure-api "0.23.1"]
                  [metosin/ring-swagger-ui "2.1.3"]
