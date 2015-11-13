@@ -1,6 +1,7 @@
 var app = angular.module("menasApp", []);
 
 app.controller("menasController", function($scope, $http) {
+    $scope.loginPanel = true;
     $scope.tokenInput = "";
     $scope.token = "";
     $scope.menas = [];
@@ -32,6 +33,10 @@ app.controller("menasController", function($scope, $http) {
             .success(function(response) {
                 resetNewMena();
                 $scope.token = response;
+                $scope.loginPanel = false;
+            })
+            .error(function(response) {
+                alert("Wrong login");
             });
         $scope.pwd = "";
     };

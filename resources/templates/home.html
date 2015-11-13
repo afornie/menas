@@ -35,7 +35,7 @@
                     <input placeholder="Title" type="text" ng-model="newMena.title" value="Title"/>
                     <input placeholder="Tags" type="text" maxlength="64" ng-model="addTags">
                     <br/>
-                    <textarea placeholder="Type your message" maxlength="140" rows="10" cols="70" ng-model="newMena.body"></textarea>
+                    <textarea placeholder="Type your message" maxlength="2048" rows="10" cols="70" ng-model="newMena.body"></textarea>
                 </div>
             </td>
             <td>
@@ -52,7 +52,6 @@
                             <a ng-click="submitMena()">Fight!</a>
                         </li>
                     </ul>
-
                 </div>
             </td>
         </tr>

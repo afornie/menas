@@ -62,19 +62,23 @@
     </div>
   </header>
 
-  <div style="position: absolute; top: 65px; right: 5px;">
+  <div ng-show="loginPanel" style="position: absolute; top: 65px; right: 5px;">
     <table>
       <tr>
-        <td><span class="login">User</span></td>
+        <td><span class="login-label">User</span></td>
         <td>
           <input type="text" ng-model="user">
         </td>
         <td rowspan="2">
-          <button ng-click="login()">Login</button>
+          <ul class="pager">
+            <li class="next">
+              <a ng-click="login()">Login</a>
+            </li>
+          </ul>
         </td>
       </tr>
       <tr>
-        <td><span class="login">Password</span></td>
+        <td><span class="login-label">Password</span></td>
         <td>
           <input type="password" ng-model="pwd">
         </td>
