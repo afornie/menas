@@ -28,22 +28,6 @@
                    :pwd String
                    })
 
-
-(defn fill-mena
-  [mena]
-  (DateTimeZone/setDefault DateTimeZone/UTC)
-  (assoc
-    (assoc mena :userId "server-user")
-
-    :createdOn (new DateTime)))
-
-(defn generate-token
-  []
-  (let [token (crypto.random/hex 32)]
-    (println "Generated token is " token)
-    token)
-  )
-
 (defapi service-routes
   (ring.swagger.ui/swagger-ui
    "/swagger-ui")
@@ -64,19 +48,17 @@
            :query-params [token :- s/Str]
            (do
              (validate-token token)
-             (let [mena (fill-mena mena)]
-               (create-mena mena))
+             (create-mena mena token)
              (ok "ok")))
 
     (POST* "/login" []
            :summary      "Login and get a session token"
            :return       String
            :body [body Login]
-           (do
-             (if (validate-user (body :user) (body :pwd))
-               (let [token (generate-token)]
+           (let [token (validate-user (body :user) (body :pwd))]
+             (if token
+               (do
                  (println "Login successful")
-                 (set-token token)
                  (ok token))
                (do
                  (println "Unauthorized. Wrong login")
