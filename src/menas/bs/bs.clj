@@ -39,6 +39,12 @@
   [alias pwd]
   (println
     "Current sessions are " @stored-tokens)
-  (if (not= 1 (find-user alias pwd))
-          true
-          false))
+  (let [user-found (find-user alias pwd)]
+    (println "User found for given alias and password " user-found)
+    (if (empty? user-found)
+      (do
+        (println "Login failed")
+        false)
+      (do
+        (println "Login correct")
+        true))))

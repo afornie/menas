@@ -75,8 +75,11 @@
            (do
              (if (validate-user (body :user) (body :pwd))
                (let [token (generate-token)]
+                 (println "Login successful")
                  (set-token token)
                  (ok token))
-               (unauthorized "Wrong login"))
+               (do
+                 (println "Unauthorized. Wrong login")
+                 (unauthorized "Wrong login")))
              ))
     ))
